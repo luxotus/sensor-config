@@ -4,6 +4,7 @@ import time
 
 # gpio 7
 # 3.3v
+# connect vcc to data pin with 4.7k ohms 
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
