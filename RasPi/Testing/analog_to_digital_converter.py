@@ -5,7 +5,6 @@ sys.path.insert(0, os.path.abspath('..'))
 print(os.path.abspath('..'))
 from Libraries.usefulFunctions import readAnalogDigitalConverter
 
-GPIO.setup()
 GPIO.setmode(GPIO.BCM)
 DEBUG = 1
 
@@ -23,13 +22,16 @@ GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
 # Analog pins starting with 0
-analogSensor_01 = 0;
+analogSensor_01 = 0; 
 
-while True:
-    # read the analog pin
-    analogValue_01 = readAnalogDigitalConverter(analogSensor_01, SPICLK, SPIMOSI, SPIMISO, SPICS)
-    
-    print "analog value: ", analogValue_01 
-    time.sleep(1)
-
-GPIO.cleanup() 
+if __name__ == '__main__':
+    try:
+        while True:
+            # read the analog pin
+            analogValue_01 = readAnalogDigitalConverter(analogSensor_01, SPICLK, SPIMOSI, SPIMISO, SPICS)
+            
+            print "analog value: ", analogValue_01 
+            time.sleep(1)
+    # Stop on Ctrl+C and clean up
+    except KeyboardInterrupt:
+        GPIO.cleanup()
