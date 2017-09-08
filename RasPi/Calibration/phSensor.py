@@ -56,8 +56,8 @@ if __name__ == '__main__':
             # read the analog pin
             phAnalogValue = readAnalogDigitalConverter(phAnalogValue, SPICLK, SPIMOSI, SPIMISO, SPICS)
             
-            print "PH Analog Value: " + phAnalogValue
-            print "Temp: " + read_temp() + "F"
+            print "PH Analog Value: " + str(phAnalogValue)
+            print "Temp: " + str(read_temp()) + "F"
             time.sleep(1)
     except KeyboardInterrupt:
         GPIO.cleanup()
