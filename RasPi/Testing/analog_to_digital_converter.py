@@ -1,7 +1,8 @@
+import sys, os
 import time
-import os
 import RPi.GPIO as GPIO
-from ../Libraries/usefulFunctions import readAnalogDigitalConverter
+sys.path.insert(0, os.path.abspath('..'))
+from RasPi.Libraries.usefulFunctions import readAnalogDigitalConverter
 
 GPIO.setmode(GPIO.BCM)
 DEBUG = 1
