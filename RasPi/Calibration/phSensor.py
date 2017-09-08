@@ -1,5 +1,6 @@
 import sys, os
 import time
+import glob
 import RPi.GPIO as GPIO
 sys.path.insert(0, os.path.abspath('..'))
 print(os.path.abspath('..'))
@@ -56,7 +57,7 @@ if __name__ == '__main__':
             phAnalogValue = readAnalogDigitalConverter(phAnalogValue, SPICLK, SPIMOSI, SPIMISO, SPICS)
             
             print "PH Analog Value: " + phAnalogValue
-            print "Temp: " + phAnalogValue + "F"
+            print "Temp: " + read_temp() + "F"
             time.sleep(1)
     except KeyboardInterrupt:
         GPIO.cleanup()
