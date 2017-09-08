@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.abspath('..'))
 print(os.path.abspath('..'))
 from Libraries.usefulFunctions import readAnalogDigitalConverter
 
+GPIO.setup()
 GPIO.setmode(GPIO.BCM)
 DEBUG = 1
 
