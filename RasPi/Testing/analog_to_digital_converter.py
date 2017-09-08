@@ -3,7 +3,7 @@ import time
 import RPi.GPIO as GPIO
 sys.path.insert(0, os.path.abspath('..'))
 print(os.path.abspath('..'))
-# from RasPi.Libraries.usefulFunctions import readAnalogDigitalConverter
+from Libraries.usefulFunctions import readAnalogDigitalConverter
 
 GPIO.setmode(GPIO.BCM)
 DEBUG = 1
