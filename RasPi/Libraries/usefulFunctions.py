@@ -34,3 +34,6 @@ def readAnalogDigitalConverter(adcnum, clockpin, mosipin, misopin, cspin):
         
     adcout >>= 1       # first bit is 'null' so drop it
     return adcout
+    
+def celcius_to_farenheit(num):
+    return num * 9.0 / 5.0 + 32.0

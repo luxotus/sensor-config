@@ -5,10 +5,11 @@ sys.path.insert(0, os.path.abspath('..'))
 print(os.path.abspath('..'))
 from Libraries.usefulFunctions import readAnalogDigitalConverter
 
+# MCP3008 Analog to Digital converter 
+
 GPIO.setmode(GPIO.BCM)
 DEBUG = 1
 
-# change these as desired - they're the pins connected from the
 # SPI port on the ADC to the Cobbler
 SPICLK = 18
 SPIMISO = 23
