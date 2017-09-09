@@ -7,6 +7,12 @@ from Libraries.usefulFunctions import *
 from datetime import datetime
 import calendar
 
+conn = sqlite3.connect('phCal.db')
+c = conn.cursor()
+
+c.execute("CREATE TABLE IF NOT EXISTS phCal(temperature INTEGER, analog INTEGER, currentDateTime DATETIME)")
+conn.commit()
+
 GPIO.setmode(GPIO.BCM)
 
 # SPI port on the ADC to the Cobbler
@@ -28,11 +34,12 @@ if __name__ == '__main__':
     try:
         while True:
             unixtime = calendar.timegm(datetime.utcnow().utctimetuple())
+            # print( datetime.fromtimestamp(int(unixtime)).strftime('%Y-%m-%d %H:%M:%S'))
+            
             phAnalogValue = readAnalogDigitalConverter(phAnalogSensor, SPICLK, SPIMOSI, SPIMISO, SPICS)
-            # print "PH Analog Value: ", phAnalogValue
-            # print "Temp: " + str(read_temp()) + "F"
             print "(" + str(read_temp()) + "," + str(phAnalogValue) + "," + str(unixtime) + ")"
-            print( datetime.fromtimestamp(int(unixtime)).strftime('%Y-%m-%d %H:%M:%S'))
+            c.execute("INSERT INTO phCal VALUES (?,?,?)", (read_temp(), phAnalogValue, unixtime))
+            conn.commit()
             time.sleep(1)
     except KeyboardInterrupt:
         GPIO.cleanup()
