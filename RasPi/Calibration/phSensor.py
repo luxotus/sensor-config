@@ -7,9 +7,6 @@ from Libraries.usefulFunctions import *
 from datetime import datetime
 import calendar
 
-d = datetime.utcnow()
-unixtime = calendar.timegm(d.utctimetuple())
-
 GPIO.setmode(GPIO.BCM)
 
 # SPI port on the ADC to the Cobbler
@@ -30,6 +27,7 @@ phAnalogSensor = 0
 if __name__ == '__main__':
     try:
         while True:
+            unixtime = calendar.timegm(datetime.utcnow().utctimetuple())
             phAnalogValue = readAnalogDigitalConverter(phAnalogSensor, SPICLK, SPIMOSI, SPIMISO, SPICS)
             # print "PH Analog Value: ", phAnalogValue
             # print "Temp: " + str(read_temp()) + "F"
