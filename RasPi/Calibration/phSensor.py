@@ -1,11 +1,11 @@
 import sys, os
 import time
 import RPi.GPIO as GPIO
-import sqlite3
+# import sqlite3
 sys.path.insert(0, os.path.abspath('..'))
 from Libraries.usefulFunctions import *
-from datetime import datetime
-import calendar
+# from datetime import datetime
+# import calendar
 
 d = datetime.utcnow()
 unixtime = calendar.timegm(d.utctimetuple())
