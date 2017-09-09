@@ -5,7 +5,6 @@ sys.path.insert(0, os.path.abspath('..'))
 from Libraries.usefulFunctions import readAnalogDigitalConverter
 
 # MCP3008 Analog to Digital converter 
-
 GPIO.setmode(GPIO.BCM)
 DEBUG = 1
 
