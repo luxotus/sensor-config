@@ -21,7 +21,7 @@ GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
 # Analog pins starting with 0
-analogSensor_01 = 0; 
+analogSensor_01 = 0 
 
 if __name__ == '__main__':
     try:
