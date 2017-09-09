@@ -32,7 +32,7 @@ if __name__ == '__main__':
             # print "PH Analog Value: ", phAnalogValue
             # print "Temp: " + str(read_temp()) + "F"
             print "(" + str(read_temp()) + "," + str(phAnalogValue) + "," + str(unixtime) + ")"
-            print( datetime.datetime.fromtimestamp(int(unixtime)).strftime('%Y-%m-%d %H:%M:%S'))
+            print( datetime.fromtimestamp(int(unixtime)).strftime('%Y-%m-%d %H:%M:%S'))
             time.sleep(1)
     except KeyboardInterrupt:
         GPIO.cleanup()
