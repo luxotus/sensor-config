@@ -2,7 +2,6 @@ import sys, os
 import time
 import RPi.GPIO as GPIO
 sys.path.insert(0, os.path.abspath('..'))
-print(os.path.abspath('..'))
 from Libraries.usefulFunctions import *
 
 GPIO.setmode(GPIO.BCM)
@@ -29,7 +28,7 @@ if __name__ == '__main__':
             phAnalogValue = readAnalogDigitalConverter(phAnalogValue, SPICLK, SPIMOSI, SPIMISO, SPICS)
             
             print "PH Analog Value: ", phAnalogValue
-            print "Temp: " + str(read_temp()) + "F"
+            # print "Temp: " + str(read_temp()) + "F"
             time.sleep(1)
     except KeyboardInterrupt:
         GPIO.cleanup()

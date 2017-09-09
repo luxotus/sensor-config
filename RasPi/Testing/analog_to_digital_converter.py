@@ -2,8 +2,7 @@ import sys, os
 import time
 import RPi.GPIO as GPIO
 sys.path.insert(0, os.path.abspath('..'))
-print(os.path.abspath('..'))
-from Libraries.usefulFunctions import *
+from Libraries.usefulFunctions import readAnalogDigitalConverter
 
 # MCP3008 Analog to Digital converter 
 
