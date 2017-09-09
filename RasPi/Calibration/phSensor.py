@@ -18,13 +18,13 @@ GPIO.setup(SPIMISO, GPIO.IN)
 GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
+# PH sensor connected to analog pin 0 on the MCP3008
+phAnalogValue = 0
+
 if __name__ == '__main__':
     try:
         while True:
-            # PH sensor connected to analog pin 0 on the MCP3008
-            phAnalogValue = 0
             phAnalogValue = readAnalogDigitalConverter(phAnalogValue, SPICLK, SPIMOSI, SPIMISO, SPICS)
-            
             print "PH Analog Value: ", phAnalogValue
             print "Temp: " + str(read_temp()) + "F"
             time.sleep(1)
