@@ -10,7 +10,7 @@ import calendar
 conn = sqlite3.connect('phCal.db')
 c = conn.cursor()
 
-c.execute("CREATE TABLE IF NOT EXISTS phCal(temperature INTEGER, analog INTEGER, currentDateTime DATETIME)")
+c.execute("CREATE TABLE IF NOT EXISTS phCal(sampleName TEXT, temperature INTEGER, analog INTEGER, currentDateTime DATETIME)")
 conn.commit()
 
 GPIO.setmode(GPIO.BCM)
@@ -27,6 +27,9 @@ GPIO.setup(SPIMISO, GPIO.IN)
 GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
+# Name of sample
+sampleName = "Air"
+
 # PH sensor connected to analog pin 0 on the MCP3008
 phAnalogSensor = 0
 
@@ -38,7 +41,7 @@ if __name__ == '__main__':
             
             phAnalogValue = readAnalogDigitalConverter(phAnalogSensor, SPICLK, SPIMOSI, SPIMISO, SPICS)
             print "(" + str(read_temp()) + "," + str(phAnalogValue) + "," + str(unixtime) + ")"
-            c.execute("INSERT INTO phCal VALUES (?,?,?)", (read_temp(), phAnalogValue, unixtime))
+            c.execute("INSERT INTO phCal VALUES (?,?,?,?)", (sampleName, read_temp(), phAnalogValue, unixtime))
             conn.commit()
             time.sleep(1)
     except KeyboardInterrupt:
