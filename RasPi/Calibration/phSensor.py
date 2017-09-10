@@ -40,7 +40,7 @@ if __name__ == '__main__':
             # print( datetime.fromtimestamp(int(unixtime)).strftime('%Y-%m-%d %H:%M:%S'))
             
             phAnalogValue = readAnalogDigitalConverter(phAnalogSensor, SPICLK, SPIMOSI, SPIMISO, SPICS)
-            print "(" + str(read_temp()) + "," + str(phAnalogValue) + "," + str(unixtime) + ")"
+            print "(" + sampleName + ", " + str(read_temp()) + ", " + str(phAnalogValue) + ", " + str(unixtime) + ")"
             c.execute("INSERT INTO phCal VALUES (?,?,?,?)", (sampleName, read_temp(), phAnalogValue, unixtime))
             conn.commit()
             time.sleep(1)
