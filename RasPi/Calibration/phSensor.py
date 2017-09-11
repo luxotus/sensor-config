@@ -28,7 +28,7 @@ GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 
 # Name of sample
-sampleName = "Air"
+sampleName = "Nice Distilled Water Opened months ago"
 
 # PH sensor connected to analog pin 0 on the MCP3008
 phAnalogSensor = 0
